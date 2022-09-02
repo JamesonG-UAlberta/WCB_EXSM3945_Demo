@@ -1,3 +1,5 @@
+using API_Demo.Data;
+
 namespace API_Demo
 {
     public class Program
@@ -12,6 +14,7 @@ namespace API_Demo
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<DatabaseContext>();
 
             var app = builder.Build();
 
