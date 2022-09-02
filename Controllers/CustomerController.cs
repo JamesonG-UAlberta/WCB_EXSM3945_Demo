@@ -25,27 +25,53 @@ namespace API_Demo.Controllers
 
         // GET api/<CustomerController>/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Customer> Get(string id)
         {
-            return StatusCode(501);
+            int providedID;
+            try
+            {
+                providedID = int.Parse(id);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            try
+            {
+                Customer found = _context.Customers.Where(x => x.Id == providedID).Single();
+                return found;
+            }
+            catch
+            {
+                return NotFound();
+            }
         }
 
         // POST api/<CustomerController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(string fname, string lname)
         {
+
         }
 
         // PUT api/<CustomerController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, string fname, string lname)
         {
+
+        }
+
+        [HttpPatch("{id}")]
+        public void Patch(int id, string prop, string value)
+        {
+
         }
 
         // DELETE api/<CustomerController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
         }
     }
 }
