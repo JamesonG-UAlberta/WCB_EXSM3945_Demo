@@ -18,6 +18,7 @@ namespace API_Demo
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                // For development use, sort of like a built-in postman that can show all your end points, query them, etc.
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
